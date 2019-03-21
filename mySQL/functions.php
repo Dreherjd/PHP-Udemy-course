@@ -14,3 +14,42 @@ function showAllData(){
     }
 }
 ?>
+
+<?php
+
+    function updateTable(){
+        global $connection;
+       $username = $_POST['username'];
+       $password = $_POST['password'];
+       $id = $_POST['id'];
+
+       //put single quotes around variables that would be string values, integer values do not need quotes.
+       $query = "UPDATE users SET ";
+       $query .= "username = '$username', ";
+       $query .= "password = '$password' ";
+       $query .= "WHERE id = $id ";
+
+       $result = mysqli_query($connection, $query);
+       if(!$result){
+           die("Query failed: " . mysqli_error($connection));
+       }
+    }
+?>
+
+<?php
+    function deleteRows(){
+        global $connection;
+       $username = $_POST['username'];
+       $password = $_POST['password'];
+       $id = $_POST['id'];
+
+       //put single quotes around variables that would be string values, integer values do not need quotes.
+       $query = "DELETE FROM users ";
+       $query .= "WHERE id = $id ";
+
+       $result = mysqli_query($connection, $query);
+       if(!$result){
+           die("Query failed: " . mysqli_error($connection));
+       }
+    }
+?>

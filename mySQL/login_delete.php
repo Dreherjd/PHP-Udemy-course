@@ -3,7 +3,7 @@
 <?php
 
 if(ISSET($_POST['submit'])){
-    updateTable();
+    deleteRows();
 }
 ?>
 
@@ -20,7 +20,7 @@ if(ISSET($_POST['submit'])){
 <body>
 <div class="container">
     <div class="col-sm-6">
-    <form action="login_update.php" method="post">
+    <form action="login_delete.php" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" class="form-control">
@@ -37,7 +37,7 @@ if(ISSET($_POST['submit'])){
                 </select>
             </div>
             <div class="form-group">
-                <input class="btn btn-primary" type="submit" name="submit" value="Update">
+                <input class="btn btn-primary" type="submit" name="submit" value="Delete">
             </div>
         </form>
     </div>

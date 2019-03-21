@@ -1,15 +1,23 @@
+<?php include "db.php" ?>
 <?php
 
 if(isset($_POST['submit'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
-
-    $connection = mysqli_connect('localhost', 'root', '', 'loginApp');
-    if($connection){
-        echo "we are connected";
-    }else{
-        die('database connection failed');
-    }
+    
+    //mysqli_real_escape_string escapes strings to avoid sql injections
+    $username = mysqli_real_escape_string($connection, $username);
+    $password = mysqli_real_escape_string($connection, $password);
+    
+    $hashFormat = "$2y$10$";
+    $salt = "iusesomecrazystrings22";
+    $hash_and_salt = $hashFormat . $salt;
+    
+    $password = crypt($password, $hash_and_salt);
+    
+    
+    
+    
 
     $query = "INSERT INTO users(username,password) VALUES ('$username', '$password')";
     $result = mysqli_query($connection, $query);
